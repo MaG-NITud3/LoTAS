@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.Callable;
 
 import org.lwjgl.opengl.GL11;
@@ -16,8 +17,10 @@ import de.pfannekuchen.lotas.core.MCVer;
 import de.pfannekuchen.lotas.core.utils.EventUtils.Timer;
 import de.pfannekuchen.lotas.mods.SavestateMod;
 import de.pfannekuchen.lotas.mods.TickrateChangerMod;
+import io.netty.util.internal.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * The info hud is a hud that is always being rendered ontop of the screen, it can show some stuff such as coordinates, etc.,
@@ -162,13 +165,23 @@ public class InfoHud extends GuiScreen {
 		}
 	}
 	
+	int t = 0;
+	
 	/**
 	 * Updates every tick
 	 */
 	public void tick() {
 		if (checkInit()) return;
 		for (InfoLabel label : lists) label.tick();
+		t++;
+		if (t == 7) {
+			t = 0;
+			b = rng.nextBoolean();
+		}
 	}
+	
+	static Random rng = new Random();
+	static boolean b;
 	
 	public boolean checkInit() {
 		if (configuration != null) return false;
@@ -229,6 +242,10 @@ public class InfoHud extends GuiScreen {
 				double distTraveledLastTickX = MCVer.player(Minecraft.getMinecraft()).posX - MCVer.player(Minecraft.getMinecraft()).prevPosX;
 				double distTraveledLastTickZ = MCVer.player(Minecraft.getMinecraft()).posZ - MCVer.player(Minecraft.getMinecraft()).prevPosZ;
 				return String.format("%.2f", MCVer.sqrt((distTraveledLastTickX * distTraveledLastTickX + distTraveledLastTickZ * distTraveledLastTickZ)) / 0.05F) + " blocks/sec";
+			}));
+			if (configuration.getProperty("subscribe_x", "err").equals("err")) setDefaults("subscribe");
+			lists.add(new InfoLabel("subscribe", Integer.parseInt(configuration.getProperty("subscribe_x")), Integer.parseInt(configuration.getProperty("subscribe_y")), Boolean.parseBoolean(configuration.getProperty("subscribe_visible")), Boolean.parseBoolean(configuration.getProperty("subscribe_rect")), () -> {
+				return "\u00A7fSubscribe to \u00A74\u00A7" + (b ? "n" : "4") + Minecraft.getMinecraft().player.getName();
 			}));
 		} catch (Exception e) {
 			e.printStackTrace();
