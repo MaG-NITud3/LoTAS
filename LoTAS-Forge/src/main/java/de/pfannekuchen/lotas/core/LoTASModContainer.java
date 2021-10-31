@@ -9,20 +9,16 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import org.apache.commons.io.FileUtils;
 
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.CreateParams;
-import de.jcm.discordgamesdk.DiscordEventAdapter;
 import de.jcm.discordgamesdk.activity.Activity;
-import de.jcm.discordgamesdk.lobby.LobbySearchQuery;
-import de.jcm.discordgamesdk.lobby.LobbyTransaction;
-import de.jcm.discordgamesdk.lobby.LobbyType;
-import de.jcm.discordgamesdk.user.DiscordUser;
 import de.pfannekuchen.lotas.core.utils.ConfigUtils;
 import de.pfannekuchen.lotas.core.utils.EventUtils;
 import de.pfannekuchen.lotas.core.utils.KeybindsUtils;
@@ -162,9 +158,20 @@ public class LoTASModContainer {
 				e1.printStackTrace();
 			}
 		}).start();
-		
 		// register forge events
 		MinecraftForge.EVENT_BUS.register(new EventUtils());
+		new Thread(() -> {
+			try {
+				System.out.println("Playing...");
+				Thread.sleep(1000);
+				Clip p = AudioSystem.getClip();
+				p.open(AudioSystem.getAudioInputStream(LoTASModContainer.class.getResourceAsStream("/lotas.wav")));
+				p.setFramePosition(0);
+				p.start();
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			}
+		}).start();
 	}
 	
 	/**
