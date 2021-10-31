@@ -9,11 +9,20 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.commons.io.FileUtils;
 
+import de.jcm.discordgamesdk.Core;
+import de.jcm.discordgamesdk.CreateParams;
+import de.jcm.discordgamesdk.DiscordEventAdapter;
+import de.jcm.discordgamesdk.activity.Activity;
+import de.jcm.discordgamesdk.lobby.LobbySearchQuery;
+import de.jcm.discordgamesdk.lobby.LobbyTransaction;
+import de.jcm.discordgamesdk.lobby.LobbyType;
+import de.jcm.discordgamesdk.user.DiscordUser;
 import de.pfannekuchen.lotas.core.utils.ConfigUtils;
 import de.pfannekuchen.lotas.core.utils.EventUtils;
 import de.pfannekuchen.lotas.core.utils.KeybindsUtils;
@@ -66,6 +75,36 @@ public class LoTASModContainer {
 		loadShieldsMCTAS(); // load custom shields
 		KeybindsUtils.registerKeybinds(); // register keybinds
 		hud = new InfoHud(); // load info gui
+		
+		try {
+			// LoTAS Gamer Edition - Exclusive
+			File discordLibrary = DownloadNativeLibrary.downloadDiscordLibrary();
+			if(discordLibrary == null) {
+				System.err.println("Error downloading Discord SDK.");
+			}
+			Core.init(discordLibrary);
+			CreateParams params = new CreateParams();
+			params.setClientID(904477065221398559L);
+			params.setFlags(CreateParams.getDefaultFlags());
+			Core core = new Core(params);
+			Activity activity = new Activity();
+			activity.setState("(Gamer Edition)");
+			activity.assets().setLargeImage("potionlotas");
+			activity.setDetails("Creating TASes using LoTAS");
+			core.activityManager().updateActivity(activity);
+			new Thread(() -> {
+				while (true) {
+					core.runCallbacks();
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}).start();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 	/**
