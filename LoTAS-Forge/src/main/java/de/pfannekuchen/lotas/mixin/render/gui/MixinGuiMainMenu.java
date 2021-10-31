@@ -15,14 +15,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import de.pfannekuchen.lotas.core.MCVer;
-import de.pfannekuchen.lotas.core.utils.ConfigUtils;
-import de.pfannekuchen.lotas.gui.GuiAcceptTracking;
 import de.pfannekuchen.lotas.gui.GuiConfiguration;
 import de.pfannekuchen.lotas.gui.GuiVideoUpspeeder;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.ResourceLocation;
 
 @Mixin(GuiMainMenu.class)
 public abstract class MixinGuiMainMenu extends GuiScreen {
@@ -95,9 +95,20 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 		}
 	}
 	
-	@Inject(at = @At("HEAD"), method = "drawScreen")
-	public void injectdrawScreen(CallbackInfo ci) {
-		this.splashText = "TaS iS cHeAtInG !!1";
+	@Inject(at = @At("TAIL"), method = "drawScreen")
+	public void injectdrawScreen(int x, int y, float delta, CallbackInfo ci) {
+		this.splashText = "";
+		int bx = this.buttonList.get(1).x;
+		int by = this.buttonList.get(1).y;
+		int bwidth = this.buttonList.get(1).width;
+		int bheight = this.buttonList.get(1).height;
+		if (x > bx && x < (bx + bwidth) && y > by && y < (by + bheight)) {
+			this.buttonList.get(1).displayString = "§cDon't click this!";
+		} else {
+			this.buttonList.get(1).displayString = "Speed up Video";
+		}
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "ah.png"));
+		Gui.drawModalRectWithCustomSizedTexture(width / 2 - 162, this.buttonList.get(0).y - 110, 0, 0, 313, 100, 313, 100);
 	}
 	
 }
