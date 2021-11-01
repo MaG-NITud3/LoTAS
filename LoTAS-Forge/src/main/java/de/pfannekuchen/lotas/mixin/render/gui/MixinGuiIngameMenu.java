@@ -56,7 +56,7 @@ public abstract class MixinGuiIngameMenu extends GuiScreen {
 	
 	@Inject(method = "initGui", at = @At("RETURN"))
 	public void injectinitGui(CallbackInfo ci) {
-		this.buttonList.set(1, new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + -16, I18n.format("menu.returnToGame")) {
+		this.buttonList.set(1, new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + -16, I18n.format("Continue TAS")) {
 			@Override
 			public void playPressSound(SoundHandler soundHandlerIn) {
 				// Don't play the sound when returning to game
@@ -122,7 +122,7 @@ public abstract class MixinGuiIngameMenu extends GuiScreen {
 	@Overwrite
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		this.drawDefaultBackground();
-		this.drawCenteredString(MCVer.getFontRenderer(mc), I18n.format("menu.game"), this.width / 2, 15, 16777215);
+		this.drawCenteredString(MCVer.getFontRenderer(mc), I18n.format("Pay 9.99€ to unlock this Text"), this.width / 2, 15, 16777215);
         super.drawScreen(mouseX, mouseY, partialTicks);
 	    
 	    
