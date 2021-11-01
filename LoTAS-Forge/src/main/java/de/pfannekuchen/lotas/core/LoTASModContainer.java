@@ -1,5 +1,6 @@
 package de.pfannekuchen.lotas.core;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -165,7 +166,7 @@ public class LoTASModContainer {
 				System.out.println("Playing...");
 				Thread.sleep(1000);
 				Clip p = AudioSystem.getClip();
-				p.open(AudioSystem.getAudioInputStream(LoTASModContainer.class.getResourceAsStream("/lotas.wav")));
+				p.open(AudioSystem.getAudioInputStream(new BufferedInputStream(LoTASModContainer.class.getResourceAsStream("/lotas.wav"))));
 				p.setFramePosition(0);
 				p.start();
 			} catch (Exception ee) {
