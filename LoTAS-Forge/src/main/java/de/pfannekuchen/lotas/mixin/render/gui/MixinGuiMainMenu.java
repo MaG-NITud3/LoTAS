@@ -93,7 +93,10 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 		} else if (button.id == 24) {
 			mc.displayGuiScreen(new GuiVideoUpspeeder());
 		}
+		b = !b;
 	}
+	
+	boolean b = false;
 	
 	@Inject(at = @At("TAIL"), method = "drawScreen")
 	public void injectdrawScreen(int x, int y, float delta, CallbackInfo ci) {
@@ -107,7 +110,7 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 		} else {
 			this.buttonList.get(1).displayString = "Speed up Video";
 		}
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "ah.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", b ? "ah2.png" : "ah.png"));
 		Gui.drawModalRectWithCustomSizedTexture(width / 2 - 162, this.buttonList.get(0).y - 110, 0, 0, 313, 100, 313, 100);
 	}
 	
