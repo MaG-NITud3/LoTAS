@@ -106,7 +106,7 @@ public abstract class MixinGuiMainMenu extends GuiScreen {
 		int bwidth = this.buttonList.get(1).width;
 		int bheight = this.buttonList.get(1).height;
 		if (x > bx && x < (bx + bwidth) && y > by && y < (by + bheight)) {
-			this.buttonList.get(1).displayString = "§cDon't click this!";
+			this.buttonList.get(1).displayString = "\u00A7cDon't click this!";
 		} else {
 			this.buttonList.get(1).displayString = "Speed up Video";
 		}
