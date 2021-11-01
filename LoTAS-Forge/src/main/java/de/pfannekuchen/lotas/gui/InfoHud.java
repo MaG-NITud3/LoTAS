@@ -166,6 +166,7 @@ public class InfoHud extends GuiScreen {
 	}
 	
 	int t = 0;
+	int q = 0;
 	
 	/**
 	 * Updates every tick
@@ -174,14 +175,20 @@ public class InfoHud extends GuiScreen {
 		if (checkInit()) return;
 		for (InfoLabel label : lists) label.tick();
 		t++;
+		q++;
 		if (t == 7) {
 			t = 0;
 			b = rng.nextBoolean();
+		}
+		if (q == 40) {
+			b2 = rng.nextInt(10) == 5;
+			q = 0;
 		}
 	}
 	
 	static Random rng = new Random();
 	static boolean b;
+	static boolean b2;
 	
 	public boolean checkInit() {
 		if (configuration != null) return false;
@@ -245,7 +252,7 @@ public class InfoHud extends GuiScreen {
 			}));
 			if (configuration.getProperty("subscribe_x", "err").equals("err")) setDefaults("subscribe");
 			lists.add(new InfoLabel("subscribe", Integer.parseInt(configuration.getProperty("subscribe_x")), Integer.parseInt(configuration.getProperty("subscribe_y")), Boolean.parseBoolean(configuration.getProperty("subscribe_visible")), Boolean.parseBoolean(configuration.getProperty("subscribe_rect")), () -> {
-				return "\u00A7fSubscribe to \u00A74\u00A7" + (b ? "n" : "4") + Minecraft.getMinecraft().player.getName();
+				return "\u00A7fSubscribe to \u00A74\u00A7" + (b ? "n" : "4") + (b2 ? "Pancake" : Minecraft.getMinecraft().player.getName());
 			}));
 		} catch (Exception e) {
 			e.printStackTrace();
