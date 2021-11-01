@@ -104,7 +104,7 @@ public abstract class MixinGuiIngameMenu extends GuiScreen {
         this.buttonList.add(new GuiCheckBox(22, 2, height - 20 - 15, I18n.format("Avoid taking damage"), !ConfigUtils.getBoolean("tools", "takeDamage")));
         this.buttonList.add(new GuiButton(23, 37, 115, 66, 20, I18n.format("Jump ticks")));
         this.buttonList.add(new GuiButton(24, 5, 115, 30, 20, I18n.format(((int) TickrateChangerMod.ticks[TickrateChangerMod.ji]) + "t")));
-		this.buttonList.add(new GuiButton(25, this.width / 2 - 100, this.height / 4 + 144 + -16, I18n.format("Reset Timer")));
+		this.buttonList.add(new GuiButton(25, this.width / 2 - 100, this.height / 4 + 144 + -16, I18n.format("Save and Quit to Title")));
 		this.buttonList.add(new GuiCheckBox(26, 2, height - 32 - 15, I18n.format("Drop towards me"), ConfigUtils.getBoolean("tools", "manipulateVelocityTowards")));
 		this.buttonList.add(new GuiCheckBox(27, 2, height - 44 - 15, I18n.format("Drop away from me"), ConfigUtils.getBoolean("tools", "manipulateVelocityAway")));
 		this.buttonList.add(new GuiCheckBox(28, 2, height - 56 - 15, I18n.format("Optimize Explosions"), ConfigUtils.getBoolean("tools", "manipulateExplosionDropChance")));
