@@ -25,7 +25,6 @@ import net.minecraft.entity.boss.dragon.phase.PhaseList;
 import net.minecraft.entity.boss.dragon.phase.PhaseSittingBase;
 import net.minecraft.entity.boss.dragon.phase.PhaseStrafePlayer;
 import net.minecraft.util.ResourceLocation;
-@SuppressWarnings("serial")
 public class GuiDragonManipulation extends GuiScreen {
 
     GuiScreen here;

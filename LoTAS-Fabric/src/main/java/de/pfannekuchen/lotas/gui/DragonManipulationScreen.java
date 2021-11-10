@@ -22,7 +22,6 @@ import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
  * Draws a gui screen where the player can select the next dragon phase the dragon will execute. All buttons are disabled if there is no dragon available
  * @author Pancake
  */
-@SuppressWarnings("serial")
 public class DragonManipulationScreen extends Screen {
 
 	Screen here;
