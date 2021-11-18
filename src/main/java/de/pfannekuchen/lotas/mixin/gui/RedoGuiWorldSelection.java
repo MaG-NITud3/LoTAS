@@ -38,8 +38,8 @@ public abstract class RedoGuiWorldSelection extends GuiScreen {
 	@Inject(at = @At("HEAD"), method = "initGui")
 	public void injectinitGui(CallbackInfo ci) {
 		buttonList.add(new GuiButton(16, 5, 5, 98, 20, "Seeds"));
-		buttonList.add(new GuiCheckBox(17, width - 17 - mc.fontRendererObj.getStringWidth("Open ESC when joining world"), 4, "Open ESC when joining world", ConfigManager.getBoolean("tools", "hitEscape")));
-		buttonList.add(new GuiCheckBox(18, width - 17 - mc.fontRendererObj.getStringWidth("Open ESC when joining world"), 16, "Show TAS Challenge Maps", !ConfigManager.getBoolean("tools", "hideMaps")));
+		buttonList.add(new GuiCheckBox(17, width - 17 - mc.fontRenderer.getStringWidth("Open ESC when joining world"), 4, "Open ESC when joining world", ConfigManager.getBoolean("tools", "hitEscape")));
+		buttonList.add(new GuiCheckBox(18, width - 17 - mc.fontRenderer.getStringWidth("Open ESC when joining world"), 16, "Show TAS Challenge Maps", !ConfigManager.getBoolean("tools", "hideMaps")));
 	}
 	
 	@Inject(at = @At("RETURN"), method = "initGui")

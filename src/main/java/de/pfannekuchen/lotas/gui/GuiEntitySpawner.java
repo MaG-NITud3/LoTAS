@@ -106,11 +106,11 @@ public class GuiEntitySpawner extends GuiScreen {
 		buttonList.add(new GuiButton(6, width / 9 * 7 + 1, height - 24, width / 9 - 4, 20, "Z++"));
 		buttonList.add(new GuiButton(4, width / 9 * 8 + 1, height - 24, width / 9 - 4, 20, "Z--"));
 		
-		xText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 9 * 3 + 6, height - 46, (int) (width / 4.5) - 6, 20);
+		xText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 9 * 3 + 6, height - 46, (int) (width / 4.5) - 6, 20);
 		xText.setText(spawnX + "");
-		yText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 9 * 5 + 4, height - 46, (int) (width/ 4.5) - 6, 20);
+		yText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 9 * 5 + 4, height - 46, (int) (width/ 4.5) - 6, 20);
 		yText.setText(spawnY + "");
-		zText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 9 * 7 + 2, height - 46, (int) (width/ 4.5) - 6, 20);
+		zText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 9 * 7 + 2, height - 46, (int) (width/ 4.5) - 6, 20);
 		zText.setText(spawnZ + "");
 		
 		buttonList.add(new GuiButton(69, 5, height - 24, width / 3, 20, "Spawn Entity"));
@@ -134,8 +134,8 @@ public class GuiEntitySpawner extends GuiScreen {
 	}
 	
 	@Override
-	protected void mouseReleased(int mouseX, int mouseY, int state) {
-		super.mouseReleased(mouseX, mouseY, state);
+	protected void mouseMovedOrUp(int mouseX, int mouseY, int state) {
+		super.mouseMovedOrUp(mouseX, mouseY, state);
 		e = entity.getEntity(mc.theIntegratedServer.worldServerForDimension(mc.thePlayer.dimension));
 		e.setPositionAndRotation(spawnX, spawnY, spawnZ, 0, 0);
 		

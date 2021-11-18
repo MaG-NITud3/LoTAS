@@ -20,7 +20,6 @@
     	"MixinExplosionDropChance",
     	"MixinLootEntity",
     	"MixinLootBlock",
-    	"MixinAchievement",
     	"MixinEndPortal",
     	"MixinTegratedServer",
     	"MixinEnchantmentDurability",

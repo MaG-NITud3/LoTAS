@@ -53,7 +53,7 @@ public class GuiConfiguration extends GuiScreen {
 			String title = option.split(":")[2];
 			if (option.split(":")[0].equalsIgnoreCase("S")) {
 				String v = option.split(":")[3];
-				strings.add(new GuiTextFieldId(i++, mc.fontRendererObj, width / 2 - 100, y, 200, 20));
+				strings.add(new GuiTextFieldId(i++, mc.fontRenderer, width / 2 - 100, y, 200, 20));
 				strings.get(strings.size() - 1).setText(v);
 				messages.put(y, title);
 			}
@@ -64,7 +64,7 @@ public class GuiConfiguration extends GuiScreen {
 			String title = option.split(":")[2];
 			if (option.split(":")[0].equalsIgnoreCase("I")) {
 				String v = option.split(":")[3];
-				ints.add(new GuiTextFieldId(i++, mc.fontRendererObj, width / 2 - 100, y, 200, 20));
+				ints.add(new GuiTextFieldId(i++, mc.fontRenderer, width / 2 - 100, y, 200, 20));
 				ints.get(ints.size() - 1).setText(v);
 				messages.put(y, title);
 			}
@@ -125,9 +125,9 @@ public class GuiConfiguration extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawBackground(0);
-		drawCenteredString(mc.fontRendererObj, "Configuration Menu", width / 2, 5, 0xFFFFFFFF);
+		drawCenteredString(mc.fontRenderer, "Configuration Menu", width / 2, 5, 0xFFFFFFFF);
 		for (Entry<Integer, String> entry : messages.entrySet()) {
-			drawString(mc.fontRendererObj, entry.getValue(), 35, entry.getKey() + 5, 0xFFFFFFFF);
+			drawString(mc.fontRenderer, entry.getValue(), 35, entry.getKey() + 5, 0xFFFFFFFF);
 		}
 		for (GuiTextField field : strings) {
 			field.drawTextBox();

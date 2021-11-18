@@ -41,7 +41,7 @@ public abstract class RedoGuiIngameMenu extends GuiScreen {
 	
 	public GuiTextField savestateName;
 	
-	@ModifyArg(index = 3, method = "drawScreen", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiIngameMenu;drawCenteredString(Lnet/minecraft/client/gui/fontRendererObj;Ljava/lang/String;III)V"))
+	@ModifyArg(index = 3, method = "drawScreen", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiIngameMenu;drawCenteredString(Lnet/minecraft/client/gui/fontRenderer;Ljava/lang/String;III)V"))
 	public int cheeseIt(int in) {
 		return in == 40 ? 15 : in;
 	}
@@ -105,9 +105,9 @@ public abstract class RedoGuiIngameMenu extends GuiScreen {
 			}	
 		}
 		
-		drawString(mc.fontRendererObj, "Tickrate Changer (" + TickrateChanger.tickrate + ")", 5, 5, 0xFFFFFF);
+		drawString(mc.fontRenderer, "Tickrate Changer (" + TickrateChanger.tickrate + ")", 5, 5, 0xFFFFFF);
 		
-		drawCenteredString(mc.fontRendererObj, "Hold Shift to access more features", width / 2, this.height / 4 + 150, 0xFFFFFF);
+		drawCenteredString(mc.fontRenderer, "Hold Shift to access more features", width / 2, this.height / 4 + 150, 0xFFFFFF);
 		
 		if (savestateName != null) savestateName.drawTextBox();
 		
@@ -117,23 +117,23 @@ public abstract class RedoGuiIngameMenu extends GuiScreen {
 				SavestateMod.showSavestateDone = false;
 				return;
 			}
-			drawCenteredString(mc.fontRendererObj, "\u00A76Savestate successful...", width / 2, 40, new Color(1F, 1F, 1F, 1F - (timeSince / 2000F)).getRGB());
+			drawCenteredString(mc.fontRenderer, "\u00A76Savestate successful...", width / 2, 40, new Color(1F, 1F, 1F, 1F - (timeSince / 2000F)).getRGB());
 		} else if (SavestateMod.showLoadstateDone) {
 			long timeSince = System.currentTimeMillis() - SavestateMod.timeTitle;
 			if (timeSince >= 1800) {
 				SavestateMod.showLoadstateDone = false;
 				return;
 			}
-			drawCenteredString(mc.fontRendererObj, "\u00A76Loadstate successful...", width / 2, 40, new Color(1F, 1F, 1F, 1F - (timeSince / 2000F)).getRGB());
+			drawCenteredString(mc.fontRenderer, "\u00A76Loadstate successful...", width / 2, 40, new Color(1F, 1F, 1F, 1F - (timeSince / 2000F)).getRGB());
 		}
 		
-		mc.fontRendererObj.drawStringWithShadow("Tickrate Changer", 10, 97, 0xFFFFFF);
-		mc.fontRendererObj.drawStringWithShadow("Duping", 10, 45, 0xFFFFFF);
+		mc.fontRenderer.drawStringWithShadow("Tickrate Changer", 10, 97, 0xFFFFFF);
+		mc.fontRenderer.drawStringWithShadow("Duping", 10, 45, 0xFFFFFF);
 		int w = width - 5;
-		mc.fontRendererObj.drawStringWithShadow("Tracked Items Delay: ", w - mc.fontRendererObj.getStringWidth("Tracked Items Delay: ") - 1, 10, 0xFFFFFFFF);
+		mc.fontRenderer.drawStringWithShadow("Tracked Items Delay: ", w - mc.fontRenderer.getStringWidth("Tracked Items Delay: ") - 1, 10, 0xFFFFFFFF);
 		int h = 22;
 		for (EntityItem item : DupeMod.trackedObjects) {
-			mc.fontRendererObj.drawStringWithShadow(item.delayBeforeCanPickup + "t " + item.getEntityItem().getDisplayName(), w - mc.fontRendererObj.getStringWidth("Tracked Items Delay: "), h, 0xFFFFFFFF);
+			mc.fontRenderer.drawStringWithShadow(item.delayBeforeCanPickup + "t " + item.getEntityItem().getDisplayName(), w - mc.fontRenderer.getStringWidth("Tracked Items Delay: "), h, 0xFFFFFFFF);
 			h += 10;
 		}
 	}
@@ -168,7 +168,7 @@ public abstract class RedoGuiIngameMenu extends GuiScreen {
 	public void redoactionPerformed(GuiButton button, CallbackInfo ci) {
 		if (button.id == 13) {
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-				savestateName = new GuiTextField(mc.fontRendererObj, this.width / 2 - 100, this.height / 4 + 96 + -16, 98, 20);
+				savestateName = new GuiTextField(mc.fontRenderer, this.width / 2 - 100, this.height / 4 + 96 + -16, 98, 20);
 				button.enabled = false;
 				savestateName.setFocused(true);
 			} else SavestateMod.savestate(null);

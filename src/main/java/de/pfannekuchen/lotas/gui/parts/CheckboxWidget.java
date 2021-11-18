@@ -28,14 +28,14 @@ public class CheckboxWidget extends GuiButton {
 
 	public void drawButton(Minecraft minecraftClient, int mouseX, int mouseY, float delta) {
 		GL11.glEnable(GL11.GL_DEPTH);
-		FontRenderer textRenderer = minecraftClient.fontRendererObj;
+		FontRenderer textRenderer = minecraftClient.fontRenderer;
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0f);
 		GL11.glEnable(GL11.GL_BLEND);
 //		GL11.gl(770, 771, 1,
 //				0);
 		GL11.glBlendFunc(770, 771);
 		minecraftClient.getTextureManager().bindTexture(TEXTURE);
-		drawModalRectWithCustomSizedTexture(this.xPosition, this.yPosition, 0.0F, this.checked ? 20.0F : 0.0F, 20, this.height, 32, 64);
+		func_146110_a(this.xPosition, this.yPosition, 0.0F, this.checked ? 20.0F : 0.0F, 20, this.height, 32, 64);
 		this.drawString(textRenderer, this.displayString, this.xPosition + 24, this.yPosition + (this.height - 8) / 2,
 				14737632 | MathHelper.ceiling_float_int(1.0f * 255.0F) << 24);
 	}

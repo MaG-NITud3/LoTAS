@@ -112,7 +112,7 @@ public class GuiLootManipulation extends GuiScreen {
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         int y = 30;
         for (DropManipulation m : manipulations) {
-            drawString(mc.fontRendererObj, m.getName(), 32, y, 0xFFFFFF);
+            drawString(mc.fontRenderer, m.getName(), 32, y, 0xFFFFFF);
             y += 15;
         }
         manipulations.get(selected).render(mouseX, mouseY, delta);

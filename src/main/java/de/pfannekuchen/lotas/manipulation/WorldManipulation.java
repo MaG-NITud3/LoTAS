@@ -46,7 +46,7 @@ public class WorldManipulation {
 			stack.addEnchantment(Enchantment.aquaAffinity, 1);
 			GL11.glPushMatrix();
 			GL11.glScaled(1.4, 1.4, 1.4);
-			new RenderItem().renderItemIntoGUI(Minecraft.getMinecraft().fontRendererObj, Minecraft.getMinecraft().getTextureManager(), stack, (int) ((posX - 12) / 1.4f), (int) ((posY - 54) / 1.4f));
+			new RenderItem().renderItemIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, (int) ((posX - 12) / 1.4f), (int) ((posY - 54) / 1.4f));
 			GL11.glPopMatrix();
 		}
 	}

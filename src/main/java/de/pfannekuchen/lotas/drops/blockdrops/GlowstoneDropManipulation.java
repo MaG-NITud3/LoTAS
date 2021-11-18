@@ -122,14 +122,14 @@ public class GlowstoneDropManipulation extends GuiLootManipulation.DropManipulat
         if (!enabled.isChecked()) {
             GL11.glColor4f(.5f, .5f, .5f, .4f);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("Drop " + dust + " Glowstone Dust when breaking Glowstone", x, y + 64, 0xFFFFFF);
+            Minecraft.getMinecraft().fontRenderer.drawStringWithShadow("Drop " + dust + " Glowstone Dust when breaking Glowstone", x, y + 64, 0xFFFFFF);
             drop4Glowstonedust.render(mouseX, mouseY, delta);
             drop3Glowstonedust.render(mouseX, mouseY, delta);
             drop2Glowstonedust.render(mouseX, mouseY, delta);
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/glowstone.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
     }
 
 }

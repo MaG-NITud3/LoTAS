@@ -114,7 +114,7 @@ public class MonsterDropManipulation extends GuiLootManipulation.DropManipulatio
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/spider.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 109, 85, 109, 85);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 109, 85, 109, 85);
     }
 
 }

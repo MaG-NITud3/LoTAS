@@ -54,12 +54,12 @@ public class GuiSeedList extends GuiListExtended {
 
 			s2 = "Seed: " + s2;
 
-			Minecraft.getMinecraft().fontRendererObj.drawString(s, x + 2, y + 1, 16777215);
-			Minecraft.getMinecraft().fontRendererObj.drawString(s1, x + 2,
-					y + Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + 3, 8421504);
-			Minecraft.getMinecraft().fontRendererObj.drawString(s2, x + 2,
-					y + Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT
-							+ Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + 3,
+			Minecraft.getMinecraft().fontRenderer.drawString(s, x + 2, y + 1, 16777215);
+			Minecraft.getMinecraft().fontRenderer.drawString(s1, x + 2,
+					y + Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT + 3, 8421504);
+			Minecraft.getMinecraft().fontRenderer.drawString(s2, x + 2,
+					y + Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT
+							+ Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT + 3,
 					8421504);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		}

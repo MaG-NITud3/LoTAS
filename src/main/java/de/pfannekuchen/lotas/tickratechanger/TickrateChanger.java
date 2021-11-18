@@ -186,12 +186,12 @@ public class TickrateChanger {
 			Gui.drawRect(0, 0, 75, ConfigManager.getBoolean("ui", "hideRTATimer") ? 13 : 24, new Color(0, 0, 0, 175).getRGB());
 			Duration dur = Duration.ofMillis(Timer.ticks * 50);
 			if (Timer.running) rta = Duration.ofMillis(System.currentTimeMillis() - Timer.startTime.toMillis());
-			Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(Timer.getDuration(dur), 1, 3, 0xFFFFFFFF);
-			if (!ConfigManager.getBoolean("ui", "hideRTATimer")) Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("RTA: " + Timer.getDuration(rta), 1, 15, 0xFFFFFFFF);
+			Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(Timer.getDuration(dur), 1, 3, 0xFFFFFFFF);
+			if (!ConfigManager.getBoolean("ui", "hideRTATimer")) Minecraft.getMinecraft().fontRenderer.drawStringWithShadow("RTA: " + Timer.getDuration(rta), 1, 15, 0xFFFFFFFF);
 		} 
 		if (e.type == ElementType.TEXT && ConfigManager.getBoolean("tools", "showTickIndicator") && tickrate <= 5F && show) {
 			Minecraft.getMinecraft().getTextureManager().bindTexture(streaming);
-			Gui.drawModalRectWithCustomSizedTexture(Minecraft.getMinecraft().displayWidth - 17, 1, 0, 0, 16, 16, 16, 64);
+			Gui.func_146110_a(Minecraft.getMinecraft().displayWidth - 17, 1, 0, 0, 16, 16, 16, 64);
 		}
 	}
 }

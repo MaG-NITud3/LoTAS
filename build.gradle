@@ -1,10 +1,9 @@
 buildscript {
     repositories {
-    	maven { url = "https://sizableshrimp.me/maven" }
         jcenter()
         maven {
             name = "forge"
-            url = "https://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net/"
         }
 		maven {
             name = 'sponge'
@@ -12,7 +11,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+        	changing = true
+        }
     }
 }
 
@@ -28,7 +29,7 @@ archivesBaseName = "lotas"
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "run"
-	mappings = 'stable_12'
+	//mappings = 'stable_12'
 }
 
 def refMap = "${tasks.compileJava.temporaryDir}" + File.separator + "mixin.${archivesBaseName}.refmap.json"
@@ -56,7 +57,6 @@ configurations {
 
 dependencies {
 	shade 'org.spongepowered:mixin:0.7.10-SNAPSHOT'
-	compile files ('libs/ffmpeg.jar')
 }
 
 jar {
@@ -70,6 +70,7 @@ jar {
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': "mixin.lotas.json",
             'FMLCorePluginContainsFMLMod': 'true',
+            'FMLAT': 'lotas_at.cfg',
             "MixinCompatibilityLevel": "JAVA_8"
     )
 

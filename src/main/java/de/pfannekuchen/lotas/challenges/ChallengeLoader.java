@@ -50,7 +50,7 @@ public class ChallengeLoader {
 		SavestateMod.isLoading = true;
 		
 		for (WorldServer w : Minecraft.getMinecraft().theIntegratedServer.worldServers) {
-			w.disableLevelSaving = true;
+			w.levelSaving = false;
 		}
 		
         Minecraft.getMinecraft().theWorld.sendQuittingDisconnectingPacket();
@@ -143,7 +143,7 @@ public class ChallengeLoader {
     private static void launchIntegratedServer(String folderName, String worldName, WorldSettings worldSettingsIn) {
         
         try {
-        	Field h = Minecraft.getMinecraft().getClass().getDeclaredField(FMLLaunchHandler.isDeobfuscatedEnvironment() ? "saveLoader" : "field_71469_aa");
+        	Field h = Minecraft.getMinecraft().getClass().getDeclaredField("field_71469_aa");
         	h.setAccessible(true);
         	h.set(Minecraft.getMinecraft(), map.getSaveLoader());
         } catch (Exception e) {
@@ -201,11 +201,11 @@ public class ChallengeLoader {
         }
 
         Minecraft.getMinecraft().displayGuiScreen((GuiScreen)null);
-        SocketAddress socketaddress = Minecraft.getMinecraft().theIntegratedServer.getNetworkSystem().addLocalEndpoint();
+        SocketAddress socketaddress = Minecraft.getMinecraft().theIntegratedServer.func_147137_ag().addLocalEndpoint();
         NetworkManager networkmanager = NetworkManager.provideLocalClient(socketaddress);
         networkmanager.setNetHandler(new NetHandlerLoginClient(networkmanager, Minecraft.getMinecraft(), (GuiScreen)null));
         networkmanager.scheduleOutboundPacket(new C00Handshake(4, socketaddress.toString(), 0, EnumConnectionState.LOGIN), new GenericFutureListener[0]);
-        networkmanager.scheduleOutboundPacket(new C00PacketLoginStart(Minecraft.getMinecraft().getSession().getProfile()), new GenericFutureListener[0]);
+        networkmanager.scheduleOutboundPacket(new C00PacketLoginStart(Minecraft.getMinecraft().getSession().func_148256_e()), new GenericFutureListener[0]);
         try {
         	Field networkManager2 = Minecraft.getMinecraft().getClass().getDeclaredField("myNetworkManager");
         	networkManager2.setAccessible(true);

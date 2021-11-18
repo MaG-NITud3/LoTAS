@@ -45,7 +45,7 @@ public class GuiLoadstate extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		list.drawScreen(mouseX, mouseY, partialTicks);
-		drawCenteredString(mc.fontRendererObj, "Select State to load", width / 2, 16, 0xFFFFFF);
+		drawCenteredString(mc.fontRenderer, "Select State to load", width / 2, 16, 0xFFFFFF);
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
 	
@@ -96,9 +96,9 @@ public class GuiLoadstate extends GuiScreen {
 				String s = name;
 				String s1 = description;
 				
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, x + 32 + 3, y + 1, 16777215);
-				Minecraft.getMinecraft().fontRendererObj.drawString(s1, x + 32 + 3,
-						y + Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + 3, 8421504);
+				Minecraft.getMinecraft().fontRenderer.drawString(s, x + 32 + 3, y + 1, 16777215);
+				Minecraft.getMinecraft().fontRenderer.drawString(s1, x + 32 + 3,
+						y + Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT + 3, 8421504);
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			}
 			

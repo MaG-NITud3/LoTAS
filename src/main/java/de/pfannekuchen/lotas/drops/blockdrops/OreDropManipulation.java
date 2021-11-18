@@ -82,7 +82,7 @@ public class OreDropManipulation extends GuiLootManipulation.DropManipulation {
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/diamond_ore.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
     }
 
 }

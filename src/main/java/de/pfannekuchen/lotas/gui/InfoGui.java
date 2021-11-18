@@ -15,7 +15,7 @@ public class InfoGui {
 	@SubscribeEvent
 	public void render(RenderGameOverlayEvent e) {
 		if (e.type != ElementType.TEXT) return;
-    	FontRenderer renderer = Minecraft.getMinecraft().fontRendererObj;
+    	FontRenderer renderer = Minecraft.getMinecraft().fontRenderer;
     	int height = Minecraft.getMinecraft().displayHeight;
 		String out1 = "";
         GameSettings gs = Minecraft.getMinecraft().gameSettings;

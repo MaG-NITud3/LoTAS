@@ -46,7 +46,7 @@ public class ImageButton extends ButtonWidget {
         Minecraft.getMinecraft().getTextureManager().bindTexture(pic);
         GL11.glPushMatrix();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        Gui.drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0.0F, 0.0F, 20, 20, 20, 20);
+        Gui.func_146110_a(xPosition, yPosition, 0.0F, 0.0F, 20, 20, 20, 20);
         GL11.glPopMatrix();
     }
 

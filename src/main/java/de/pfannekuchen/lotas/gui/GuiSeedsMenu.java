@@ -25,9 +25,9 @@ public class GuiSeedsMenu extends GuiScreen {
 	}
 	
 	@Override
-	protected void mouseReleased(int arg0, int arg1, int arg2) {
+	protected void mouseMovedOrUp(int arg0, int arg1, int arg2) {
 		list.func_148181_b(arg0, arg1, arg2);
-		super.mouseReleased(arg0, arg1, arg2);
+		super.mouseMovedOrUp(arg0, arg1, arg2);
 	}
 	
 	

@@ -8,9 +8,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import de.pfannekuchen.lotas.tickratechanger.TickrateChanger;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.WorldServer;
 
 @Mixin(MinecraftServer.class)
 public abstract class BindMinecraftServer {
+	
+	@Shadow
+	public WorldServer[] worldServers;
+	
+	@Shadow
+	public boolean serverRunning;
 	
 	/*
 	 * This Part synchronizes the Server to the Client
@@ -36,6 +43,10 @@ public abstract class BindMinecraftServer {
 		}
 		TickrateChanger.ticksPassedServer++;
 		TickrateChanger.resetAdvanceServer();
+		
+		// fuck you
+		if (worldServers == null) serverRunning = false;
+		else if (worldServers.length == 0) serverRunning = false;
 	}
 	
 	@Shadow

@@ -14,15 +14,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import de.pfannekuchen.lotas.config.ConfigManager;
-import de.pfannekuchen.lotas.gui.GuiAcceptance;
 import de.pfannekuchen.lotas.gui.GuiConfiguration;
-import de.pfannekuchen.lotas.gui.GuiVideoUpspeeder;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
-import work.mgnet.identifier.Client;
 
 @Mixin(GuiMainMenu.class)
 public abstract class RedoGuiMainMenu extends GuiScreen {
@@ -41,33 +36,10 @@ public abstract class RedoGuiMainMenu extends GuiScreen {
 
 	@Inject(at = @At("RETURN"), method = "addSingleplayerMultiplayerButtons")
 	public void redoaddSingleplayerMultiplayerButtons(int p_73969_1_, int p_73969_2_, CallbackInfo ci) {
-		((GuiButton) ((GuiButton) buttonList.get(1))).id = 24;
-		((GuiButton) ((GuiButton) buttonList.get(1))).displayString = "Speed up Video";
+		((GuiButton) ((GuiButton) buttonList.get(1))).visible = false;
 		((GuiButton) buttonList.get(3)).visible = false;
 		((GuiButton) buttonList.get(2)).visible = false;
 		buttonList.add(new GuiButton(69, ((GuiButton) buttonList.get(2)).xPosition, ((GuiButton) buttonList.get(3)).yPosition, "Configuration"));
-        
-        if (!ConfigManager.getBoolean("hidden", "acceptedDataSending")) {
-        	new Thread(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					} // ;)
-					Minecraft.getMinecraft().displayGuiScreen(new GuiAcceptance()); // :(
-				}
-			}).start();
-        } else {
-        	// REMOVE THIS TRY CATCH!
-        	try {
-        		Client.main(null);
-        	} catch (Exception e) {
-				e.printStackTrace();
-				// THIS IS BAD, NEED TO FIND A SOLUTION!
-			}
-        }
 	}
 	
     private static final int BUFFER_SIZE = 4096;
@@ -110,8 +82,6 @@ public abstract class RedoGuiMainMenu extends GuiScreen {
 	public void actionPerformed(GuiButton button, CallbackInfo ci) throws IOException {
 		if (button.id == 69) {
 			mc.displayGuiScreen(new GuiConfiguration());
-		} else if (button.id == 24) {
-			mc.displayGuiScreen(new GuiVideoUpspeeder());
 		}
 	}
 	

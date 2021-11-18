@@ -122,14 +122,14 @@ public class DeadbushDropManipulation extends GuiLootManipulation.DropManipulati
         if (!enabled.isChecked()) {
             GL11.glColor4f(.5f, .5f, .5f, .4f);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("Drop " + sticks + " Sticks when breaking Gravel", x, y + 64, 0xFFFFFF);
+            Minecraft.getMinecraft().fontRenderer.drawStringWithShadow("Drop " + sticks + " Sticks when breaking Gravel", x, y + 64, 0xFFFFFF);
             drop2Stick.render(mouseX, mouseY, delta);
             drop1Stick.render(mouseX, mouseY, delta);
             drop0Stick.render(mouseX, mouseY, delta);
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/deadbush.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
     }
 
 }

@@ -21,7 +21,7 @@ public abstract class MixinLeaves extends Block {
 		super(materialIn);
 	}
 
-	@Overwrite
+	@Overwrite(remap = false)
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
 		Random rand = world instanceof World ? ((World)world).rand : new Random();

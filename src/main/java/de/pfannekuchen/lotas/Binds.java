@@ -14,18 +14,18 @@ import rlog.RLogAPI;
 
 public class Binds {
 
-	public static KeyBinding saveState = new KeyBinding("Savestate", Keyboard.KEY_J, "States");
-	public static KeyBinding loadState = new KeyBinding("Loadstate", Keyboard.KEY_K, "States");
-	public static KeyBinding loadDupe = new KeyBinding("Load Items/Chests", Keyboard.KEY_O, "Duping");
-	public static KeyBinding saveDupe = new KeyBinding("Save Items/Chests", Keyboard.KEY_P, "Duping");
-	public static KeyBinding strafe = new KeyBinding("Strafe +45", Keyboard.KEY_H, "Moving");
-	public static KeyBinding unstrafe = new KeyBinding("Strafe -45", Keyboard.KEY_G, "Moving");
-	public static KeyBinding freecam = new KeyBinding("Freecam", Keyboard.KEY_I, "Moving");
-	public static KeyBinding slower = new KeyBinding("Faster Tickrate", Keyboard.KEY_PERIOD, "Tickrate Changer");
-	public static KeyBinding faster = new KeyBinding("Slower Tickrate", Keyboard.KEY_COMMA, "Tickrate Changer");
-	public static KeyBinding advance = new KeyBinding("Advance Tick", Keyboard.KEY_F9, "Tickrate Changer");
-	public static KeyBinding zero = new KeyBinding("Tickrate Zero Toggle", Keyboard.KEY_F8, "Tickrate Changer");
-	public static KeyBinding timer = new KeyBinding("Start/Stop Timer", Keyboard.KEY_NUMPAD5, "Tickrate Changer");
+	public static KeyBinding saveState = new KeyBinding("Savestate", Keyboard.KEY_J, "Misc");
+	public static KeyBinding loadState = new KeyBinding("Loadstate", Keyboard.KEY_K, "Misc");
+	public static KeyBinding loadDupe = new KeyBinding("Load Items/Chests", Keyboard.KEY_O, "Misc");
+	public static KeyBinding saveDupe = new KeyBinding("Save Items/Chests", Keyboard.KEY_P, "Misc");
+	public static KeyBinding strafe = new KeyBinding("Strafe +45", Keyboard.KEY_H, "Misc");
+	public static KeyBinding unstrafe = new KeyBinding("Strafe -45", Keyboard.KEY_G, "Misc");
+	public static KeyBinding freecam = new KeyBinding("Freecam", Keyboard.KEY_I, "Misc");
+	public static KeyBinding slower = new KeyBinding("Faster Tickrate", Keyboard.KEY_PERIOD, "Misc");
+	public static KeyBinding faster = new KeyBinding("Slower Tickrate", Keyboard.KEY_COMMA, "Misc");
+	public static KeyBinding advance = new KeyBinding("Advance Tick", Keyboard.KEY_F9, "Misc");
+	public static KeyBinding zero = new KeyBinding("Tickrate Zero Toggle", Keyboard.KEY_F8, "Misc");
+	public static KeyBinding timer = new KeyBinding("Start/Stop Timer", Keyboard.KEY_NUMPAD5, "Misc");
 	
 	public static boolean shouldSavestate = false;
 	public static boolean shouldLoadstate = false;

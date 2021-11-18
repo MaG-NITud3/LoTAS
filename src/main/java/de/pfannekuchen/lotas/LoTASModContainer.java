@@ -1,6 +1,5 @@
 package de.pfannekuchen.lotas;
 
-import static rlog.RLogAPI.instantiate;
 import static rlog.RLogAPI.logDebug;
 import static rlog.RLogAPI.logError;
 
@@ -19,7 +18,6 @@ import org.apache.commons.io.FileUtils;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import de.pfannekuchen.lotas.challenges.ChallengeMap;
 import de.pfannekuchen.lotas.config.ConfigManager;
 import de.pfannekuchen.lotas.gui.GuiSeedList;
@@ -28,9 +26,8 @@ import de.pfannekuchen.lotas.gui.InfoGui;
 import de.pfannekuchen.lotas.manipulation.WorldManipulation;
 import de.pfannekuchen.lotas.tickratechanger.TickrateChanger;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 
-@Mod(acceptedMinecraftVersions = "1.8.9", canBeDeactivated = false, modid = "lotas", name = "LoTAS", version = "${version}")
+@Mod(acceptedMinecraftVersions = "1.7.10", canBeDeactivated = false, modid = "lotas", name = "LoTAS", version = "${version}")
 public class LoTASModContainer {
 	
 	/*
@@ -42,28 +39,17 @@ public class LoTASModContainer {
 	public static volatile boolean playSound = false;
 	public static final List<ChallengeMap> maps = new ArrayList<ChallengeMap>();
 	
-	static {
-		try {
-			instantiate();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(29);
-		}
-	}
-	
-	
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
-		Binds.registerKeybindings();
-	}
-	
-	@EventHandler
-	public void preinit(final FMLPreInitializationEvent e) {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				logDebug("[PreInit] Initializing Configuration");
-				ConfigManager.init(new Configuration(e.getSuggestedConfigurationFile()));
+				try {
+					ConfigManager.init(new File("lotas1-7-10-rev2.cfg"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 				logDebug("[PreInit] Downloading Seeds");
 				try {
@@ -115,8 +101,8 @@ public class LoTASModContainer {
 		 
 		logDebug("[PreInit] Registering Keybindings");
 		
+		Binds.registerKeybindings();
 	}
-	
 	/**
 	 * Loads a list of seeds together with preview images from <a href="http://mgnet.work/seeds/">mgnet.work/seeds/</a> and creates a GuiSeedList SeedEntry
 	 * @see GuiSeedList

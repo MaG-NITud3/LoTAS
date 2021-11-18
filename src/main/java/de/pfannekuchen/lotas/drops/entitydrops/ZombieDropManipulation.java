@@ -107,14 +107,14 @@ public class ZombieDropManipulation extends GuiLootManipulation.DropManipulation
         if (!enabled.isChecked()) {
             GL11.glColor4f(.5f, .5f, .5f, .4f);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("Zombies drop: 2 Rotten Flesh" + (dropIron.isToggled() ? ", 1 Iron Ingot" : "") + (dropPotato.isToggled() ? ", 1 Potato" : "") + (dropCarrot.isToggled() ? ", 1 Carrot" : ""), x, y + 64, 0xFFFFFF);
+            Minecraft.getMinecraft().fontRenderer.drawStringWithShadow("Zombies drop: 2 Rotten Flesh" + (dropIron.isToggled() ? ", 1 Iron Ingot" : "") + (dropPotato.isToggled() ? ", 1 Potato" : "") + (dropCarrot.isToggled() ? ", 1 Carrot" : ""), x, y + 64, 0xFFFFFF);
             dropIron.render(mouseX, mouseY, delta);
             dropPotato.render(mouseX, mouseY, delta);
             dropCarrot.render(mouseX, mouseY, delta);
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/zombie.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 228, y + 24, 0.0F, 0.0F, 118, 198, 118, 198);
+        Gui.func_146110_a(width - 228, y + 24, 0.0F, 0.0F, 118, 198, 118, 198);
     }
 
 }

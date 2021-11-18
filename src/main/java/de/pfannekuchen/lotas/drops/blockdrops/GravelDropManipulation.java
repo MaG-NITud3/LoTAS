@@ -104,13 +104,13 @@ public class GravelDropManipulation extends GuiLootManipulation.DropManipulation
         if (!enabled.isChecked()) {
             GL11.glColor4f(.5f, .5f, .5f, .4f);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("Drop " + (flint ? "Flint" : "Gravel") + " when breaking Gravel", x, y + 64, 0xFFFFFF);
+            Minecraft.getMinecraft().fontRenderer.drawStringWithShadow("Drop " + (flint ? "Flint" : "Gravel") + " when breaking Gravel", x, y + 64, 0xFFFFFF);
             dropGravel.render(mouseX, mouseY, delta);
             dropFlint.render(mouseX, mouseY, delta);
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/gravel.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 96, 96, 96, 96);
     }
 
 }

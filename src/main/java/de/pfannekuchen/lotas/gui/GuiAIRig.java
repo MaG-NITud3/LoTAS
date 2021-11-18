@@ -27,11 +27,11 @@ public class GuiAIRig extends GuiScreen {
 		buttonList.add(new GuiButton(0, 5, 5, 98, 20, "<"));
 		buttonList.add(new GuiButton(1, width - 5 - 98, 5, 98, 20, ">"));
 		
-		xText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 2 - 100, height - 50, 60, 20);
+		xText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 2 - 100, height - 50, 60, 20);
 		xText.setText(spawnX + "");
-		yText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 2 - 30, height - 50, 60, 20);
+		yText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 2 - 30, height - 50, 60, 20);
 		yText.setText(spawnY + "");
-		zText = new GuiTextField(Minecraft.getMinecraft().fontRendererObj, width / 2 + 40, height - 50, 60, 20);
+		zText = new GuiTextField(Minecraft.getMinecraft().fontRenderer, width / 2 + 40, height - 50, 60, 20);
 		zText.setText(spawnZ + "");
 		
 		buttonList.add(new GuiButton(2, width / 2 - 100, height - 25, 200, 20, "Change Target"));
@@ -188,7 +188,7 @@ public class GuiAIRig extends GuiScreen {
 		xText.drawTextBox();
 		yText.drawTextBox();
 		zText.drawTextBox();
-		drawCenteredString(mc.fontRendererObj, entities.get(selectedIndex).getClass().getSimpleName().replaceFirst("Entity", "") + " (" + entities.get(selectedIndex).posX + ", " + entities.get(selectedIndex).posY + ", " + entities.get(selectedIndex).posZ + ")", width / 2, 5, 0xFFFFFF);
+		drawCenteredString(mc.fontRenderer, entities.get(selectedIndex).getClass().getSimpleName().replaceFirst("Entity", "") + " (" + entities.get(selectedIndex).posX + ", " + entities.get(selectedIndex).posY + ", " + entities.get(selectedIndex).posZ + ")", width / 2, 5, 0xFFFFFF);
 	}
 	
 }

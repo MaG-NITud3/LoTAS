@@ -150,7 +150,7 @@ public class PassiveDropManipulation extends GuiLootManipulation.DropManipulatio
         }
 
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("lotas", "drops/sheep.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 128, y + 24, 0.0F, 0.0F, 102, 120, 102, 120);
+        Gui.func_146110_a(width - 128, y + 24, 0.0F, 0.0F, 102, 120, 102, 120);
     }
 
 }
