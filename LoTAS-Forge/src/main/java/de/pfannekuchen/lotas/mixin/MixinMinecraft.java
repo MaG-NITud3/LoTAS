@@ -2,6 +2,7 @@ package de.pfannekuchen.lotas.mixin;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.UUID;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -33,6 +34,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.world.GameType;
+import net.minecraft.world.WorldSettings;
 
 @Mixin(Minecraft.class)
 public class MixinMinecraft {
@@ -86,6 +89,18 @@ public class MixinMinecraft {
 		if (ConfigUtils.getBoolean("tools", "lAutoClicker")) rightClickDelayTimer = 0;
     	
 		TickrateChangerMod.show = !TickrateChangerMod.show;
+		
+		if (LoTASModContainer.i != -1) {
+			if (Minecraft.getMinecraft().world != null) {
+				Minecraft.getMinecraft().world.sendQuittingDisconnectingPacket();
+				Minecraft.getMinecraft().getIntegratedServer().stopServer();
+			}
+			WorldSettings worldsettings = new WorldSettings(LoTASModContainer.i, GameType.CREATIVE, true, false, net.minecraft.world.WorldType.WORLD_TYPES[0]);
+			worldsettings.enableCommands();
+			String name = UUID.randomUUID().toString().substring(0, 10);
+			Minecraft.getMinecraft().launchIntegratedServer(name, name, worldsettings);
+			LoTASModContainer.i = -1;
+		}
 		
 		if (KeybindsUtils.shouldSavestate) {
 			KeybindsUtils.shouldSavestate = false;
