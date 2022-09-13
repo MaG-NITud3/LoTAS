@@ -10,20 +10,7 @@ import de.pfannekuchen.lotas.mods.TickrateChangerMod;
 public class MixinTickrateChangerAchievements {
 
 	//#if MC>=11601
-//$$ 		@ModifyVariable(
-				//#if MC>=11901
-//$$ 				method = "Lnet/minecraft/client/gui/components/toasts/ToastComponent$ToastInstance;render(ILcom/mojang/blaze3d/vertex/PoseStack;)Z",
-				//#else
-//$$ 				method = "Lnet/minecraft/client/gui/components/toasts/ToastComponent$ToastInstance;render(IILcom/mojang/blaze3d/vertex/PoseStack;)Z",
-				//#endif
-//$$
-//$$ 				at = @At(value = "STORE"), ordinal = 0, 
-//$$
-				//#if MC>=11901
-//$$ 				index = 3)
-				//#else
-//$$ 				index = 4)
-				//#endif
+//$$ 		@ModifyVariable(method = "Lnet/minecraft/client/gui/components/toasts/ToastComponent$ToastInstance;render(IILcom/mojang/blaze3d/vertex/PoseStack;)Z", at = @At(value = "STORE"), ordinal = 0, index = 4)
 //$$ 		public long modifyAnimationTime(long animationTimer) {
 //$$ 			return TickrateChangerMod.getMilliseconds();
 //$$ 		}
